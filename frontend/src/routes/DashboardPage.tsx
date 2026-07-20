@@ -1,7 +1,9 @@
-import { Apple, BadgeDollarSign, Dumbbell } from "lucide-react";
+import { Apple, BadgeDollarSign } from "lucide-react";
 import { type ComponentType, useState } from "react";
 
 import { InputPanel } from "../components/InputPanel";
+import { WorkoutPlanCard } from "../components/WorkoutPlanCard";
+import type { PlanRequest } from "../api/types";
 
 type TabId = "inputs" | "results";
 
@@ -9,23 +11,12 @@ type ResultCard = {
   title: string;
   label: string;
   icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
-  tone: "ocean" | "leaf" | "amber";
+  tone: "leaf" | "amber";
   stats: Array<{ label: string; value: string }>;
   rows: string[];
 };
 
 const resultCards: ResultCard[] = [
-  {
-    title: "Workout plan",
-    label: "Upper body focus",
-    icon: Dumbbell,
-    tone: "ocean",
-    stats: [
-      { label: "Exercises", value: "4" },
-      { label: "Effort", value: "Moderate" },
-    ],
-    rows: ["Push pattern", "Pull pattern", "Shoulder stability"],
-  },
   {
     title: "Meal prep",
     label: "Weekly prep",
@@ -57,6 +48,7 @@ const tabs: Array<{ id: TabId; label: string }> = [
 
 export function DashboardPage() {
   const [activeTab, setActiveTab] = useState<TabId>("inputs");
+  const [planRequest, setPlanRequest] = useState<PlanRequest | null>(null);
 
   return (
     <section aria-labelledby="dashboard-title" className="space-y-5">
@@ -95,18 +87,18 @@ export function DashboardPage() {
 
       <div className="grid gap-5 lg:grid-cols-[360px_minmax(0,1fr)]">
         <aside className={activeTab === "inputs" ? "block" : "hidden lg:block"}>
-          <InputPanel />
+          <InputPanel onValidRequestChange={setPlanRequest} />
         </aside>
 
         <div className={activeTab === "results" ? "block" : "hidden lg:block"}>
-          <ResultsPanel />
+          <ResultsPanel planRequest={planRequest} />
         </div>
       </div>
     </section>
   );
 }
 
-function ResultsPanel() {
+function ResultsPanel({ planRequest }: { planRequest: PlanRequest | null }) {
   return (
     <section aria-labelledby="results-panel-title" className="space-y-4">
       <div className="flex items-center justify-between gap-3">
@@ -119,6 +111,7 @@ function ResultsPanel() {
       </div>
 
       <div className="grid gap-4 xl:grid-cols-3">
+        <WorkoutPlanCard request={planRequest} />
         {resultCards.map((card) => (
           <ResultCardView key={card.title} card={card} />
         ))}
@@ -130,7 +123,6 @@ function ResultsPanel() {
 function ResultCardView({ card }: { card: ResultCard }) {
   const Icon = card.icon;
   const toneClass = {
-    ocean: "bg-ocean-50 text-ocean-700",
     leaf: "bg-leaf-50 text-leaf-700",
     amber: "bg-amber-50 text-amber-700",
   }[card.tone];
