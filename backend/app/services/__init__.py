@@ -1,4 +1,9 @@
 from app.services.baseline import CaloriePortionBaseline, calculate_baseline
+from app.services.budget import (
+    BudgetBreakdown,
+    BudgetCategoryBreakdown,
+    build_budget_breakdown,
+)
 from app.services.meals import (
     FoodCatalogEmptyError,
     MealPrepCombo,
@@ -15,6 +20,8 @@ from app.services.workout import (
 
 __all__ = [
     "CaloriePortionBaseline",
+    "BudgetBreakdown",
+    "BudgetCategoryBreakdown",
     "ExerciseLibraryEmptyError",
     "FoodCatalogEmptyError",
     "MealPrepCombo",
@@ -22,6 +29,7 @@ __all__ = [
     "ShoppingListItem",
     "WorkoutExercise",
     "WorkoutPlan",
+    "build_budget_breakdown",
     "build_meal_prep_plan",
     "calculate_baseline",
     "select_workout",
