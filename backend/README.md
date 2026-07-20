@@ -17,7 +17,7 @@ The service reads runtime settings from environment variables:
 ## Local Development
 
 ```bash
-python3 -m pip install -r requirements.txt
+python3 -m pip install -r requirements-dev.txt
 export DATABASE_URL="$(cat /workspace/.database_url)"
 export FRONTEND_ORIGIN="http://localhost:5173"
 python3 -m uvicorn app.main:app --app-dir . --host 0.0.0.0 --port 8080 --reload
