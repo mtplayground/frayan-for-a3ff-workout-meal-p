@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import plans_router
 from app.core.config import Settings, get_settings
+from app.core.errors import register_exception_handlers
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -21,6 +22,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def health() -> dict[str, str]:
         return {"status": "ok", "environment": app_settings.environment}
 
+    register_exception_handlers(app)
     app.include_router(plans_router)
 
     return app
