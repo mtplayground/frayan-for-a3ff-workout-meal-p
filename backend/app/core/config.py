@@ -12,7 +12,9 @@ class Settings(BaseSettings):
         default="development",
         validation_alias="ENVIRONMENT",
     )
-    frontend_origin: str = Field(default="http://localhost:5173", validation_alias="FRONTEND_ORIGIN")
+    frontend_origin: str = Field(
+        default="http://localhost:5173", validation_alias="FRONTEND_ORIGIN"
+    )
     allowed_cors_origin: str | None = Field(default=None, validation_alias="ALLOWED_CORS_ORIGIN")
     self_url: str | None = Field(default=None, validation_alias="SELF_URL")
     cors_allow_credentials: bool = Field(default=True, validation_alias="CORS_ALLOW_CREDENTIALS")

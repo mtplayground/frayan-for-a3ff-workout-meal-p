@@ -8,11 +8,17 @@
   "scripts": {
     "dev": "concurrently -n frontend,backend -c cyan,green \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "npm --workspace frontend run dev",
-    "dev:backend": "python3 -m uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port 8080 --reload",
+    "dev:backend": "sh -c 'python3 -m uvicorn app.main:app --app-dir backend --host ${BACKEND_HOST:-0.0.0.0} --port ${BACKEND_PORT:-8080} --reload'",
     "build": "npm --workspace frontend run build && python3 -m compileall backend/app",
     "build:frontend": "npm --workspace frontend run build",
     "check:backend": "python3 -m compileall backend/app",
-    "db:migrate": "alembic -c backend/alembic.ini upgrade head"
+    "db:migrate": "alembic -c backend/alembic.ini upgrade head",
+    "lint": "npm --workspace frontend run lint && npm run lint:backend",
+    "lint:backend": "python3 -m ruff check backend",
+    "format": "npm --workspace frontend run format && npm run format:backend",
+    "format:backend": "python3 -m black backend",
+    "format:check": "npm --workspace frontend run format:check && npm run format:check:backend",
+    "format:check:backend": "python3 -m black --check backend"
   },
   "devDependencies": {
     "concurrently": "9.2.0"

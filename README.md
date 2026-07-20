@@ -26,7 +26,7 @@ npm install
 Install backend dependencies in your preferred Python environment:
 
 ```bash
-python3 -m pip install -r backend/requirements.txt
+python3 -m pip install -r backend/requirements-dev.txt
 ```
 
 Run both services:
@@ -49,6 +49,9 @@ The backend listens on `0.0.0.0:8080`. The Vite frontend listens on `0.0.0.0:517
 
 ```bash
 npm run build
+npm run lint
+npm run format:check
 ```
 
-This builds the frontend and checks backend Python syntax.
+This builds the frontend, checks backend Python syntax, and runs the configured linters and
+formatters in check mode.
