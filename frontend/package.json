@@ -12,19 +12,20 @@
     "preview": "vite preview --host 0.0.0.0 --port 5173"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "latest",
     "@tailwindcss/forms": "0.5.10",
-    "typescript": "latest",
-    "vite": "latest",
+    "@vitejs/plugin-react": "latest",
+    "lucide-react": "^0.468.0",
     "react": "latest",
     "react-dom": "latest",
-    "react-router-dom": "latest"
+    "react-router-dom": "latest",
+    "typescript": "latest",
+    "vite": "latest"
   },
   "devDependencies": {
-    "autoprefixer": "10.4.20",
     "@eslint/js": "9.39.5",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "autoprefixer": "10.4.20",
     "eslint": "9.39.5",
     "eslint-plugin-react-hooks": "5.1.0",
     "eslint-plugin-react-refresh": "0.4.18",
