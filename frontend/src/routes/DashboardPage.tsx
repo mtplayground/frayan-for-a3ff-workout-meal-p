@@ -1,15 +1,7 @@
-import {
-  Activity,
-  Apple,
-  BadgeDollarSign,
-  Dumbbell,
-  Leaf,
-  Ruler,
-  Scale,
-  Target,
-  WalletCards,
-} from "lucide-react";
+import { Apple, BadgeDollarSign, Dumbbell } from "lucide-react";
 import { type ComponentType, useState } from "react";
+
+import { InputPanel } from "../components/InputPanel";
 
 type TabId = "inputs" | "results";
 
@@ -56,15 +48,6 @@ const resultCards: ResultCard[] = [
     ],
     rows: ["40% proteins", "25% carbs", "20% vegetables"],
   },
-];
-
-const fieldGroups = [
-  { label: "Weight", value: "82 kg", icon: Scale },
-  { label: "Height", value: "178 cm", icon: Ruler },
-  { label: "Focus", value: "Upper body", icon: Target },
-  { label: "Budget", value: "$125 / week", icon: WalletCards },
-  { label: "Goal", value: "Muscle gain", icon: Activity },
-  { label: "Activity", value: "Very active", icon: Leaf },
 ];
 
 const tabs: Array<{ id: TabId; label: string }> = [
@@ -118,42 +101,6 @@ export function DashboardPage() {
         <div className={activeTab === "results" ? "block" : "hidden lg:block"}>
           <ResultsPanel />
         </div>
-      </div>
-    </section>
-  );
-}
-
-function InputPanel() {
-  return (
-    <section aria-labelledby="input-panel-title" className="dashboard-card">
-      <div className="flex items-center justify-between gap-3">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-normal text-ocean-700">Inputs</p>
-          <h3 id="input-panel-title" className="text-lg font-semibold text-ink-900">
-            Profile and targets
-          </h3>
-        </div>
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ocean-50 text-ocean-700">
-          <Target aria-hidden={true} className="h-5 w-5" />
-        </div>
-      </div>
-
-      <div className="mt-5 grid gap-3">
-        {fieldGroups.map((field) => {
-          const Icon = field.icon;
-
-          return (
-            <div key={field.label} className="flex items-center gap-3 rounded-lg bg-mist-50 p-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-ocean-700 shadow-sm">
-                <Icon aria-hidden={true} className="h-4 w-4" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-xs font-medium text-ink-500">{field.label}</p>
-                <p className="truncate text-sm font-semibold text-ink-900">{field.value}</p>
-              </div>
-            </div>
-          );
-        })}
       </div>
     </section>
   );
