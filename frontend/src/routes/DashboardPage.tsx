@@ -1,9 +1,10 @@
-import { Apple, BadgeDollarSign } from "lucide-react";
+import { BadgeDollarSign } from "lucide-react";
 import { type ComponentType, useState } from "react";
 
-import { InputPanel } from "../components/InputPanel";
-import { WorkoutPlanCard } from "../components/WorkoutPlanCard";
 import type { PlanRequest } from "../api/types";
+import { InputPanel } from "../components/InputPanel";
+import { MealPrepCard } from "../components/MealPrepCard";
+import { WorkoutPlanCard } from "../components/WorkoutPlanCard";
 
 type TabId = "inputs" | "results";
 
@@ -11,23 +12,12 @@ type ResultCard = {
   title: string;
   label: string;
   icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
-  tone: "leaf" | "amber";
+  tone: "amber";
   stats: Array<{ label: string; value: string }>;
   rows: string[];
 };
 
 const resultCards: ResultCard[] = [
-  {
-    title: "Meal prep",
-    label: "Weekly prep",
-    icon: Apple,
-    tone: "leaf",
-    stats: [
-      { label: "Meals", value: "14" },
-      { label: "Calories", value: "2,350" },
-    ],
-    rows: ["Proteins", "Carbs", "Veggies", "Staples"],
-  },
   {
     title: "Budget",
     label: "Grocery allocation",
@@ -112,6 +102,7 @@ function ResultsPanel({ planRequest }: { planRequest: PlanRequest | null }) {
 
       <div className="grid gap-4 xl:grid-cols-3">
         <WorkoutPlanCard request={planRequest} />
+        <MealPrepCard request={planRequest} />
         {resultCards.map((card) => (
           <ResultCardView key={card.title} card={card} />
         ))}
@@ -123,7 +114,6 @@ function ResultsPanel({ planRequest }: { planRequest: PlanRequest | null }) {
 function ResultCardView({ card }: { card: ResultCard }) {
   const Icon = card.icon;
   const toneClass = {
-    leaf: "bg-leaf-50 text-leaf-700",
     amber: "bg-amber-50 text-amber-700",
   }[card.tone];
 
