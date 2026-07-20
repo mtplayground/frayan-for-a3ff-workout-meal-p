@@ -1,0 +1,58 @@
+Architecture plan
+
+Scope
+- Build a monorepo with a React + Tailwind frontend and a FastAPI backend.
+- Keep frontend, backend, database migrations, seed data, and deployment configuration separated enough for each GitHub issue to land independently.
+- Do not introduce a product brand/name until an issue explicitly provides it.
+
+Module structure
+- apps/web/: React application using Vite, Tailwind, and TypeScript.
+  - src/app/: application shell, routing or top-level composition.
+  - src/components/: dashboard, input panel, workout, meal prep, budget, shared UI primitives.
+  - src/api/: typed API client, query/fetch helpers, response normalization.
+  - src/types/: frontend DTOs matching backend schemas.
+  - src/styles/: Tailwind entrypoint and theme tokens.
+- apps/api/: FastAPI application.
+  - app/main.py: FastAPI app factory, middleware, router registration.
+  - app/api/: endpoint routers, especially plan generation endpoints.
+  - app/core/: settings, CORS/proxy configuration, logging, error handling.
+  - app/db/: SQLAlchemy engine/session/base and migration integration.
+  - app/models/: SQLAlchemy models for exercises, foods, and supporting catalog data.
+  - app/schemas/: Pydantic request/response schemas shared by endpoints and business logic.
+  - app/services/: calorie baseline, workout selection, meal prep, and budget calculations.
+  - app/seeds/: seed loaders and source catalog files.
+  - tests/: backend unit and endpoint tests.
+- packages/shared/: optional shared JSON schema or OpenAPI-generated TypeScript types if duplication becomes risky.
+- infra/: deployment notes, Docker/compose files, and self-hosting assets added near issue #27.
+- migrations/: Alembic versions for database schema changes.
+
+Shared types and API contract
+- Backend schemas are the source of truth for request validation and response shapes.
+- Generate or manually mirror TypeScript DTOs from Pydantic schemas once the plan endpoint stabilizes.
+- Keep DTOs plain and stable: input profile, workout plan, meal prep plan, budget breakdown, and structured error response.
+
+Issue dependencies
+- #1 establishes repo structure.
+- #2 and #3 can scaffold frontend/backend independently after #1.
+- #4 must precede data models and migrations.
+- #5 should land early, after initial app scaffolds, to standardize linting, formatting, and env examples.
+- #6 and #7 depend on #4.
+- #8 depends on #6; #9 depends on #7.
+- #10 defines the request schema used by the calculation and endpoint work.
+- #11 through #14 depend on #10 and should be implemented as isolated service modules with unit tests.
+- #15 depends on #10 through #14.
+- #16 builds on #15 and standardizes validation/error responses.
+- #17 through #22 can proceed once the frontend scaffold exists, with #18 needed before live backend integration.
+- #23 depends on #18 through #22.
+- #24 should touch both API responses and UI copy near the end of the core flow.
+- #25 depends on #15 through #24.
+- #26 depends on the full flow and should harden edge cases discovered by tests/review.
+- #27 depends on a passing app and finalized runtime configuration.
+
+Key design decisions
+- Use FastAPI/Pydantic validation at the API boundary and keep business calculations in pure service functions for simple unit testing.
+- Use SQLAlchemy and Alembic with PostgreSQL as the production database; keep seed data deterministic and rerunnable.
+- Keep the first plan endpoint stateless from the user's perspective, backed by catalog tables for exercises and foods.
+- Make CORS/proxy configuration aware of X-Forwarded-Host and ALLOWED_CORS_ORIGIN for the Ideavibes reverse proxy environment.
+- Keep the frontend dashboard as the first screen, not a landing page, with compact controls and result cards built for repeated adjustment.
+- Treat health, calorie, workout, and budget values as estimates and surface safety disclaimers without blocking the main workflow.
