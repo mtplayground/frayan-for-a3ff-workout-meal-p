@@ -5,6 +5,7 @@ description = "FastAPI backend service"
 requires-python = ">=3.11"
 dependencies = [
   "fastapi==0.116.1",
+  "pydantic-settings==2.8.1",
   "uvicorn[standard]==0.35.0"
 ]
 
