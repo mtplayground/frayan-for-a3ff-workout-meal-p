@@ -6,13 +6,13 @@ Scope
 - Do not introduce a product brand/name until an issue explicitly provides it.
 
 Module structure
-- apps/web/: React application using Vite, Tailwind, and TypeScript.
+- frontend/: React application using Vite, Tailwind, and TypeScript.
   - src/app/: application shell, routing or top-level composition.
   - src/components/: dashboard, input panel, workout, meal prep, budget, shared UI primitives.
   - src/api/: typed API client, query/fetch helpers, response normalization.
   - src/types/: frontend DTOs matching backend schemas.
   - src/styles/: Tailwind entrypoint and theme tokens.
-- apps/api/: FastAPI application.
+- backend/: FastAPI application.
   - app/main.py: FastAPI app factory, middleware, router registration.
   - app/api/: endpoint routers, especially plan generation endpoints.
   - app/core/: settings, CORS/proxy configuration, logging, error handling.
