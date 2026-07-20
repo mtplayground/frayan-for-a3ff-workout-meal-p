@@ -13,6 +13,7 @@
     "build:frontend": "npm --workspace frontend run build",
     "check:backend": "python3 -m compileall backend/app",
     "db:migrate": "alembic -c backend/alembic.ini upgrade head",
+    "seed:exercises": "PYTHONPATH=backend python3 -m app.seeds.seed_exercises",
     "lint": "npm --workspace frontend run lint && npm run lint:backend",
     "lint:backend": "python3 -m ruff check backend",
     "format": "npm --workspace frontend run format && npm run format:backend",

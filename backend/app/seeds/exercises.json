@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Chair Squat",
+    "target_body_area": "lower_body",
+    "sets_reps_guidance": "2-3 sets of 8-12 reps",
+    "intensity_tier": "low",
+    "how_to_notes": "Stand in front of a chair, sit hips back until you lightly touch the seat, then stand tall. Keep knees tracking over toes."
+  },
+  {
+    "name": "Glute Bridge",
+    "target_body_area": "lower_body",
+    "sets_reps_guidance": "2-3 sets of 10-15 reps",
+    "intensity_tier": "low",
+    "how_to_notes": "Lie on your back with knees bent, press through heels, and lift hips until shoulders, hips, and knees form a line."
+  },
+  {
+    "name": "Step-Back Lunge",
+    "target_body_area": "lower_body",
+    "sets_reps_guidance": "2-3 sets of 6-10 reps per side",
+    "intensity_tier": "moderate",
+    "how_to_notes": "Step one foot back, lower under control, then drive through the front foot to stand. Use a wall for balance if needed."
+  },
+  {
+    "name": "Calf Raise",
+    "target_body_area": "lower_body",
+    "sets_reps_guidance": "2-3 sets of 12-18 reps",
+    "intensity_tier": "low",
+    "how_to_notes": "Stand tall, rise onto the balls of your feet, pause briefly, and lower slowly while keeping weight even."
+  },
+  {
+    "name": "Incline Push-Up",
+    "target_body_area": "upper_body",
+    "sets_reps_guidance": "2-3 sets of 6-12 reps",
+    "intensity_tier": "low",
+    "how_to_notes": "Place hands on a sturdy elevated surface, keep a straight line from head to heels, and lower chest with elbows about 45 degrees."
+  },
+  {
+    "name": "Wall Push-Up",
+    "target_body_area": "upper_body",
+    "sets_reps_guidance": "2-3 sets of 10-15 reps",
+    "intensity_tier": "low",
+    "how_to_notes": "Stand arm's length from a wall, bend elbows to bring chest toward the wall, then press away while keeping ribs down."
+  },
+  {
+    "name": "Bent-Over Backpack Row",
+    "target_body_area": "upper_body",
+    "sets_reps_guidance": "2-3 sets of 8-12 reps",
+    "intensity_tier": "moderate",
+    "how_to_notes": "Hinge at the hips with a flat back, pull a loaded backpack toward your ribs, and squeeze shoulder blades gently."
+  },
+  {
+    "name": "Band Pull-Apart",
+    "target_body_area": "upper_body",
+    "sets_reps_guidance": "2-3 sets of 12-15 reps",
+    "intensity_tier": "low",
+    "how_to_notes": "Hold a light band at shoulder height, pull hands apart without shrugging, then return slowly under control."
+  },
+  {
+    "name": "Dead Bug",
+    "target_body_area": "core",
+    "sets_reps_guidance": "2-3 sets of 6-10 reps per side",
+    "intensity_tier": "low",
+    "how_to_notes": "Lie on your back, brace gently, lower opposite arm and leg without arching your back, then switch sides."
+  },
+  {
+    "name": "Forearm Plank",
+    "target_body_area": "core",
+    "sets_reps_guidance": "2-3 holds of 15-30 seconds",
+    "intensity_tier": "moderate",
+    "how_to_notes": "Set elbows under shoulders, keep body in a straight line, and stop if your lower back starts to sag."
+  },
+  {
+    "name": "Side Plank From Knees",
+    "target_body_area": "core",
+    "sets_reps_guidance": "2 holds of 12-25 seconds per side",
+    "intensity_tier": "low",
+    "how_to_notes": "Lie on one side with knees bent, lift hips, and keep shoulders stacked while breathing steadily."
+  },
+  {
+    "name": "Bird Dog",
+    "target_body_area": "core",
+    "sets_reps_guidance": "2-3 sets of 6-10 reps per side",
+    "intensity_tier": "low",
+    "how_to_notes": "Start on hands and knees, extend opposite arm and leg, pause with hips level, then return slowly."
+  },
+  {
+    "name": "Marching In Place",
+    "target_body_area": "full_body",
+    "sets_reps_guidance": "3-5 rounds of 30-60 seconds",
+    "intensity_tier": "low",
+    "how_to_notes": "Stand tall and march at a pace that lets you speak in short sentences. Reduce knee height if needed."
+  },
+  {
+    "name": "Sit-to-Stand",
+    "target_body_area": "full_body",
+    "sets_reps_guidance": "2-4 sets of 8-12 reps",
+    "intensity_tier": "low",
+    "how_to_notes": "Sit on a stable chair, lean slightly forward, stand without dropping knees inward, then sit with control."
+  },
+  {
+    "name": "Low-Impact Jumping Jack",
+    "target_body_area": "full_body",
+    "sets_reps_guidance": "3-5 rounds of 20-40 seconds",
+    "intensity_tier": "moderate",
+    "how_to_notes": "Step one foot out at a time while raising arms, keeping impact low and breathing steady."
+  },
+  {
+    "name": "Farmer Carry",
+    "target_body_area": "full_body",
+    "sets_reps_guidance": "3-4 carries of 20-40 seconds",
+    "intensity_tier": "moderate",
+    "how_to_notes": "Hold two manageable weights, stand tall, walk slowly, and keep shoulders relaxed without leaning."
+  },
+  {
+    "name": "Cat-Cow",
+    "target_body_area": "mobility",
+    "sets_reps_guidance": "1-2 sets of 6-10 slow reps",
+    "intensity_tier": "low",
+    "how_to_notes": "On hands and knees, gently round and extend your spine through a comfortable range while breathing."
+  },
+  {
+    "name": "Hip Flexor Stretch",
+    "target_body_area": "mobility",
+    "sets_reps_guidance": "1-2 holds of 20-30 seconds per side",
+    "intensity_tier": "low",
+    "how_to_notes": "Use a half-kneeling stance, tuck hips slightly, and shift forward until you feel a mild front-hip stretch."
+  },
+  {
+    "name": "Thoracic Rotation",
+    "target_body_area": "mobility",
+    "sets_reps_guidance": "1-2 sets of 6-8 reps per side",
+    "intensity_tier": "low",
+    "how_to_notes": "From hands and knees, place one hand behind your head and rotate your upper back without forcing the range."
+  },
+  {
+    "name": "Standing Hamstring Sweep",
+    "target_body_area": "mobility",
+    "sets_reps_guidance": "1-2 sets of 6-8 reps per side",
+    "intensity_tier": "low",
+    "how_to_notes": "Extend one heel forward, hinge slightly, sweep hands toward the foot, then stand tall and switch sides."
+  }
+]
