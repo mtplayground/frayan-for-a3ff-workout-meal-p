@@ -40,3 +40,10 @@ Seed the repeatable exercise library from the repository root:
 export DATABASE_URL="$(cat /workspace/.database_url)"
 PYTHONPATH=backend python3 -m app.seeds.seed_exercises
 ```
+
+Seed the repeatable food and price catalog from the repository root:
+
+```bash
+export DATABASE_URL="$(cat /workspace/.database_url)"
+PYTHONPATH=backend python3 -m app.seeds.seed_foods
+```
