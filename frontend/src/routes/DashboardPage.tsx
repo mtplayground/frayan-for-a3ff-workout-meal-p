@@ -1,35 +1,12 @@
-import { BadgeDollarSign } from "lucide-react";
-import { type ComponentType, useState } from "react";
+import { useState } from "react";
 
 import type { PlanRequest } from "../api/types";
+import { BudgetBreakdownCard } from "../components/BudgetBreakdownCard";
 import { InputPanel } from "../components/InputPanel";
 import { MealPrepCard } from "../components/MealPrepCard";
 import { WorkoutPlanCard } from "../components/WorkoutPlanCard";
 
 type TabId = "inputs" | "results";
-
-type ResultCard = {
-  title: string;
-  label: string;
-  icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
-  tone: "amber";
-  stats: Array<{ label: string; value: string }>;
-  rows: string[];
-};
-
-const resultCards: ResultCard[] = [
-  {
-    title: "Budget",
-    label: "Grocery allocation",
-    icon: BadgeDollarSign,
-    tone: "amber",
-    stats: [
-      { label: "Weekly", value: "$125" },
-      { label: "Status", value: "Balanced" },
-    ],
-    rows: ["40% proteins", "25% carbs", "20% vegetables"],
-  },
-];
 
 const tabs: Array<{ id: TabId; label: string }> = [
   { id: "inputs", label: "Inputs" },
@@ -103,52 +80,9 @@ function ResultsPanel({ planRequest }: { planRequest: PlanRequest | null }) {
       <div className="grid gap-4 xl:grid-cols-3">
         <WorkoutPlanCard request={planRequest} />
         <MealPrepCard request={planRequest} />
-        {resultCards.map((card) => (
-          <ResultCardView key={card.title} card={card} />
-        ))}
+        <BudgetBreakdownCard request={planRequest} />
       </div>
     </section>
-  );
-}
-
-function ResultCardView({ card }: { card: ResultCard }) {
-  const Icon = card.icon;
-  const toneClass = {
-    amber: "bg-amber-50 text-amber-700",
-  }[card.tone];
-
-  return (
-    <article className="dashboard-card">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-normal text-ink-500">
-            {card.label}
-          </p>
-          <h4 className="mt-1 text-lg font-semibold text-ink-900">{card.title}</h4>
-        </div>
-        <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${toneClass}`}>
-          <Icon aria-hidden={true} className="h-5 w-5" />
-        </div>
-      </div>
-
-      <div className="mt-5 grid grid-cols-2 gap-3">
-        {card.stats.map((stat) => (
-          <div key={stat.label} className="rounded-lg bg-mist-50 p-3">
-            <p className="text-xs font-medium text-ink-500">{stat.label}</p>
-            <p className="mt-1 text-xl font-semibold text-ink-900">{stat.value}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-5 space-y-2">
-        {card.rows.map((row) => (
-          <div key={row} className="flex items-center gap-2 text-sm font-medium text-ink-700">
-            <span className="h-2 w-2 rounded-full bg-leaf-500" aria-hidden={true} />
-            {row}
-          </div>
-        ))}
-      </div>
-    </article>
   );
 }
 
