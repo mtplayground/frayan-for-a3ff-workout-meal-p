@@ -12,6 +12,7 @@ The service reads runtime settings from environment variables:
 - `ALLOWED_CORS_ORIGIN` - deployed public origin injected by the platform.
 - `SELF_URL` - deployed public service URL, also allowed by CORS when present.
 - `CORS_ALLOW_CREDENTIALS` - whether CORS permits cookies and credentials. Defaults to `true`.
+- `DATABASE_URL` - PostgreSQL connection string for SQLAlchemy and Alembic.
 
 ## Local Development
 
@@ -20,4 +21,13 @@ python3 -m pip install -r requirements.txt
 export DATABASE_URL="$(cat /workspace/.database_url)"
 export FRONTEND_ORIGIN="http://localhost:5173"
 python3 -m uvicorn app.main:app --app-dir . --host 0.0.0.0 --port 8080 --reload
+```
+
+## Migrations
+
+Run Alembic migrations from the repository root:
+
+```bash
+export DATABASE_URL="$(cat /workspace/.database_url)"
+alembic -c backend/alembic.ini upgrade head
 ```

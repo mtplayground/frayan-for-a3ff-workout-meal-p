@@ -11,7 +11,8 @@
     "dev:backend": "python3 -m uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port 8080 --reload",
     "build": "npm --workspace frontend run build && python3 -m compileall backend/app",
     "build:frontend": "npm --workspace frontend run build",
-    "check:backend": "python3 -m compileall backend/app"
+    "check:backend": "python3 -m compileall backend/app",
+    "db:migrate": "alembic -c backend/alembic.ini upgrade head"
   },
   "devDependencies": {
     "concurrently": "9.2.0"
