@@ -1,16 +1,15 @@
-import "./styles.css";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { DashboardLayout } from "./layout/DashboardLayout";
+import { DashboardPage } from "./routes/DashboardPage";
 
 export function App() {
   return (
-    <main className="app-shell">
-      <section className="status-panel" aria-labelledby="status-heading">
-        <p className="eyebrow">Monorepo initialized</p>
-        <h1 id="status-heading">React frontend and FastAPI backend are ready for feature work.</h1>
-        <p>
-          This first issue establishes the local development structure. Product UI and domain
-          workflows will be implemented in later issues.
-        </p>
-      </section>
-    </main>
+    <Routes>
+      <Route element={<DashboardLayout />}>
+        <Route index element={<Navigate to="/dashboard" replace />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+    </Routes>
   );
 }
