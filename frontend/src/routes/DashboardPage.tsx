@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import type { PlanRequest } from "../api/types";
 import { BudgetBreakdownCard } from "../components/BudgetBreakdownCard";
@@ -16,6 +16,11 @@ const tabs: Array<{ id: TabId; label: string }> = [
 export function DashboardPage() {
   const [activeTab, setActiveTab] = useState<TabId>("inputs");
   const [planRequest, setPlanRequest] = useState<PlanRequest | null>(null);
+  const handleValidRequestChange = useCallback((request: PlanRequest | null) => {
+    if (request) {
+      setPlanRequest(request);
+    }
+  }, []);
 
   return (
     <section aria-labelledby="dashboard-title" className="space-y-5">
@@ -54,7 +59,7 @@ export function DashboardPage() {
 
       <div className="grid gap-5 lg:grid-cols-[360px_minmax(0,1fr)]">
         <aside className={activeTab === "inputs" ? "block" : "hidden lg:block"}>
-          <InputPanel onValidRequestChange={setPlanRequest} />
+          <InputPanel onValidRequestChange={handleValidRequestChange} />
         </aside>
 
         <div className={activeTab === "results" ? "block" : "hidden lg:block"}>
