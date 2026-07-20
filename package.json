@@ -1,0 +1,23 @@
+{
+  "name": "frayan-for-a3ff-workout-meal-p",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n frontend,backend -c cyan,green \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "npm --workspace frontend run dev",
+    "dev:backend": "python3 -m uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port 8080 --reload",
+    "build": "npm --workspace frontend run build && python3 -m compileall backend/app",
+    "build:frontend": "npm --workspace frontend run build",
+    "check:backend": "python3 -m compileall backend/app"
+  },
+  "devDependencies": {
+    "concurrently": "9.2.0"
+  },
+  "engines": {
+    "node": ">=20",
+    "npm": ">=9"
+  }
+}

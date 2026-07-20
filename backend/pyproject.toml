@@ -1,0 +1,12 @@
+[project]
+name = "frayan-for-a3ff-workout-meal-p-backend"
+version = "0.1.0"
+description = "FastAPI backend service"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi==0.116.1",
+  "uvicorn[standard]==0.35.0"
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
