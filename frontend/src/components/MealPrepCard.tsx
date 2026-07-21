@@ -69,9 +69,13 @@ export function MealPrepCard({ request }: MealPrepCardProps) {
               </h5>
             </div>
             <div className="space-y-3">
-              {mealPlan.data.sample_meal_combos.map((combo) => (
-                <MealCombo key={combo.name} combo={combo} />
-              ))}
+              {mealPlan.data.sample_meal_combos.length > 0 ? (
+                mealPlan.data.sample_meal_combos.map((combo) => (
+                  <MealCombo key={combo.name} combo={combo} />
+                ))
+              ) : (
+                <LowBudgetEmptyState message="Budget is too tight for complete sample combos. Raise the weekly budget or repeat the lowest-cost staples shown above." />
+              )}
             </div>
           </section>
         </div>
@@ -144,30 +148,44 @@ function ShoppingCategory({
           {items.length} items
         </span>
       </div>
-      <div className="space-y-3">
-        {items.map((item) => (
-          <div
-            key={item.name}
-            className="border-t border-mist-200 pt-3 first:border-t-0 first:pt-0"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div className="min-w-0">
-                <p className="truncate text-sm font-semibold text-ink-900">{item.name}</p>
-                <p className="mt-1 text-xs font-medium text-ink-500">
-                  {item.units} units at {formatMoney(item.estimated_unit_cost)} each
+      {items.length > 0 ? (
+        <div className="space-y-3">
+          {items.map((item) => (
+            <div
+              key={item.name}
+              className="border-t border-mist-200 pt-3 first:border-t-0 first:pt-0"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-ink-900">{item.name}</p>
+                  <p className="mt-1 text-xs font-medium text-ink-500">
+                    {item.units} units at {formatMoney(item.estimated_unit_cost)} each
+                  </p>
+                </div>
+                <p className="shrink-0 text-sm font-semibold text-ink-900">
+                  {formatMoney(item.estimated_total_cost)}
                 </p>
               </div>
-              <p className="shrink-0 text-sm font-semibold text-ink-900">
-                {formatMoney(item.estimated_total_cost)}
+              <p className="mt-2 text-xs font-medium text-ink-600">
+                {formatNumber(item.calories)} cal | {item.protein_grams}g protein |{" "}
+                {item.carb_grams}g carbs | {item.fat_grams}g fat
               </p>
             </div>
-            <p className="mt-2 text-xs font-medium text-ink-600">
-              {formatNumber(item.calories)} cal | {item.protein_grams}g protein | {item.carb_grams}g
-              carbs | {item.fat_grams}g fat
-            </p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <LowBudgetEmptyState
+          message={`No ${formatLabel(category).toLowerCase()} fit this category budget. Increase the weekly budget or use pantry items you already have.`}
+        />
+      )}
+    </div>
+  );
+}
+
+function LowBudgetEmptyState({ message }: { message: string }) {
+  return (
+    <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm font-medium leading-6 text-amber-800">
+      {message}
     </div>
   );
 }
