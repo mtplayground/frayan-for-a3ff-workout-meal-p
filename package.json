@@ -15,6 +15,7 @@
     "db:migrate": "alembic -c backend/alembic.ini upgrade head",
     "seed:exercises": "PYTHONPATH=backend python3 -m app.seeds.seed_exercises",
     "seed:foods": "PYTHONPATH=backend python3 -m app.seeds.seed_foods",
+    "test:e2e": "npm --workspace frontend run test:e2e",
     "lint": "npm --workspace frontend run lint && npm run lint:backend",
     "lint:backend": "python3 -m ruff check backend",
     "format": "npm --workspace frontend run format && npm run format:backend",
