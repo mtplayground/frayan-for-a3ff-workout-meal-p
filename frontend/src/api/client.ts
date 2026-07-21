@@ -45,9 +45,17 @@ export function getApiErrorMessages(error: unknown): {
     };
   }
 
+  const fieldMessages = Object.fromEntries(
+    error.fields.map((field) => [field.field, field.message]),
+  );
+  const uniqueFieldMessages = [...new Set(error.fields.map((field) => field.message))];
+
   return {
-    message: error.message,
-    fieldMessages: Object.fromEntries(error.fields.map((field) => [field.field, field.message])),
+    message:
+      uniqueFieldMessages.length > 0
+        ? `${error.message} ${uniqueFieldMessages.join(" ")}`
+        : error.message,
+    fieldMessages,
   };
 }
 
